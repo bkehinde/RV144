@@ -69,8 +69,29 @@ rowPerc(results)
 <!--Display inferential evidence as to the effectiveness of the vaccine with explanations and interpretations!-->
 
 ```{r}
-chisqtestGC(results, graph = TRUE)
+rv144 <- chisqtestGC(results, graph = TRUE)
+rv144
 ```
+ 
+ We now test the independence of the Aids and vaccine groups.
+ 
+$H_0:$ The placebo and Aids vaccines treatment is independent of  contracting the disease Aids
+  
+$H_a:$ Having the vaccine is related to contracting disease 
+
+The resulting interpretation is the following the null hypothesis is indeed true the results that we just obtained would happen about 'r rv114$p.value' percent of the time.
+As a second approarch we will consider the fisher exact test. We will state the null and 
+
+$H_0:$ The odds ratio between having aids and getting the vaccine contains thye number 1.
+  
+$H_a:$ The odds ratio between getting aids andf having the vaccine contains does not contain the number 1.
+
+```{r}
+myfish<- fisher.test(results)
+myfish
+```
+The p value from the fisher test is 'r  myfish$p.value' and the confidence interval is 'r  myfish$condf.int'
+
 
 
 ## Conclusions

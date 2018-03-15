@@ -46,8 +46,12 @@ rownames(results) <- c("none","aids")
 ## Results
 <!-- You are to add descriptive comments to explain to the reader what the plot is showing !-->
 
+These results is showing that the patients have different results taht predicted because of the low percentage of people with aids feeling the effectiveness of a placebo rather than the vaccine that is actually effective.
+
 ### Graphical results
 <!--Display graphical evidence as to the effectiveness of the vaccine with explanations!-->
+  
+  The Bar Graph is explaining that the people with the about 45 percent of vaccine and placebo had no aids.Yet the people with 40 percent of vaccine and about 58 percent of placebo that have aids have a higher percentage of effectivenesss of placebos. There is something wrong with that data because the people with aids should have a higher percentage of effectiveness of vaccine than placebos which is not the case.
 ```{r}
 barchartGC(results,type = "percent")
 ```

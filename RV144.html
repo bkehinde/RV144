@@ -162,6 +162,7 @@ rownames(results) &lt;- c(&quot;none&quot;,&quot;aids&quot;)</code></pre>
 <div id="numerical-results" class="section level3">
 <h3>Numerical Results</h3>
 <!--Display numerical evidence as to the effectiveness of the vaccine with explanations !-->
+<p>The numerical result is explaining that people without the vaccine were 99.38 that didn’t have aids. There are 99.1 people that don’t have aids but had the placebo. The next row is explaining how 0.62 people had aids and got the vaccine. The one explains about people that have aids and took the placebo.</p>
 <pre class="r"><code>colPerc(results)</code></pre>
 <pre><code>##       vacine placebo
 ## none   99.38    99.1
@@ -176,8 +177,11 @@ rownames(results) &lt;- c(&quot;none&quot;,&quot;aids&quot;)</code></pre>
 <div id="inferential-results" class="section level2">
 <h2>Inferential results</h2>
 <!--Display inferential evidence as to the effectiveness of the vaccine with explanations and interpretations!-->
-<pre class="r"><code>rv144 &lt;- chisqtestGC(results, graph = TRUE)
-rv144</code></pre>
+<p>We now want to run a statisticial test to see if the AIDS vaccine was seemingly effective. We stat the null and alternate hypothesis for this test.</p>
+<p><span class="math inline">\(H_0:\)</span> There is no relationship between getting AIDS and having the AIDS vaccine.</p>
+<p><span class="math inline">\(H_a:\)</span> There is a relationship between getting AIDS and having the AIDS vaccine</p>
+<pre class="r"><code>rv114 &lt;- chisqtestGC(results, graph = TRUE)
+rv114</code></pre>
 <pre><code>## Pearson's Chi-squared test with Yates' continuity correction 
 ## 
 ## Observed Counts:
@@ -203,10 +207,10 @@ rv144</code></pre>
 <p>We now test the independence of the Aids and vaccine groups.</p>
 <p><span class="math inline">\(H_0:\)</span> The placebo and Aids vaccines treatment is independent of contracting the disease Aids</p>
 <p><span class="math inline">\(H_a:\)</span> Having the vaccine is related to contracting disease</p>
-<p>The resulting interpretation is the following the null hypothesis is indeed true the results that we just obtained would happen about ‘r rv114$p.value’ percent of the time. As a second approarch we will consider the fisher exact test. We will state the null and</p>
-<p><span class="math inline">\(H_0:\)</span> The odds ratio between having aids and getting the vaccine contains thye number 1.</p>
-<p><span class="math inline">\(H_a:\)</span> The odds ratio between getting aids andf having the vaccine contains does not contain the number 1.</p>
-<pre class="r"><code>myfish&lt;- fisher.test(results)
+<p>The resulting interpretation is the following the null hypothesis is indeed true the results that we just obtained would happen about 0.0482363 percent of the time. As a second approach we will consider the fisher exact test. We will state the null and alternate hypothseis for that test.</p>
+<p><span class="math inline">\(H_0:\)</span> The odds ratio between having aids and getting the vaccine contains the number 1.</p>
+<p><span class="math inline">\(H_a:\)</span> The odds ratio between getting aids and having the vaccine contains does not contain the number 1.</p>
+<pre class="r"><code>myfish &lt;- fisher.test(results)
 myfish</code></pre>
 <pre><code>## 
 ##  Fisher's Exact Test for Count Data
@@ -219,11 +223,12 @@ myfish</code></pre>
 ## sample estimates:
 ## odds ratio 
 ##   1.455047</code></pre>
-<p>The p value from the fisher test is ‘r myfish<span class="math inline">\(p.value' and the confidence interval is 'r myfish\)</span>condf.int’</p>
+<p>The p value from the fisher test is 0.0478074 and the confidence interval is 1.0034403, 2.1243536. There is evidence that the interval is not 1.</p>
 </div>
 <div id="conclusions" class="section level2">
 <h2>Conclusions</h2>
 <p><Summarise your results as to the effectiveness of the vaccine with explanations that could be understood by your mom></p>
+<p>We can conclude that the effectiveness of the experiment is not determined on the relationship between getting the vaccine or having AIDS. It is seen that the vaccine is effective with the test because of the groups that were sampled. Basically the vaccine is helpful and having the disease is not helpful.</p>
 </div>
 </div>
 

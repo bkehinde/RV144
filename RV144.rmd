@@ -56,6 +56,8 @@ barchartGC(results,type = "percent")
 
 <!--Display numerical evidence as to the effectiveness of the vaccine with explanations !--> 
 
+The numerical result is explaining that people without the vaccine were 99.38 that didn't have aids. There are 99.1 people that don't have aids but had the placebo. The next row is explaining how 0.62 people had aids and got the vaccine. The one explains about people that have aids and took the placebo.
+
 ```{r}
 colPerc(results)
 rowPerc(results)
@@ -67,10 +69,19 @@ rowPerc(results)
 ## Inferential results
 
 <!--Display inferential evidence as to the effectiveness of the vaccine with explanations and interpretations!-->
+  
+We now want to run a statisticial test to see if the AIDS vaccine was seemingly effective. We stat the null and alternate hypothesis for this test.
+
+$H_0:$ There is no relationship between getting AIDS and having the AIDS vaccine.
+
+$H_a:$ There is a relationship between getting AIDS and having the AIDS vaccine 
+
+
+                                                                                              
 
 ```{r}
-rv144 <- chisqtestGC(results, graph = TRUE)
-rv144
+rv114 <- chisqtestGC(results, graph = TRUE)
+rv114
 ```
  
  We now test the independence of the Aids and vaccine groups.
@@ -79,21 +90,23 @@ $H_0:$ The placebo and Aids vaccines treatment is independent of  contracting th
   
 $H_a:$ Having the vaccine is related to contracting disease 
 
-The resulting interpretation is the following the null hypothesis is indeed true the results that we just obtained would happen about 'r rv114$p.value' percent of the time.
-As a second approarch we will consider the fisher exact test. We will state the null and 
+The resulting interpretation is the following the null hypothesis is indeed true the results that we just obtained would happen about `r rv114$p.value` percent of the time.
+As a second approach we will consider the fisher exact test. We will state the null and alternate hypothseis for that test.
 
-$H_0:$ The odds ratio between having aids and getting the vaccine contains thye number 1.
+$H_0:$ The odds ratio between having aids and getting the vaccine contains the number 1.
   
-$H_a:$ The odds ratio between getting aids andf having the vaccine contains does not contain the number 1.
+$H_a:$ The odds ratio between getting aids and having the vaccine contains does not contain the number 1.
 
 ```{r}
-myfish<- fisher.test(results)
+myfish <- fisher.test(results)
 myfish
 ```
-The p value from the fisher test is 'r  myfish$p.value' and the confidence interval is 'r  myfish$condf.int'
+The p value from the fisher test is `r  myfish$p.value` and the confidence interval is         `r myfish$condf.int` 1.0034403, 2.1243536. There is evidence that the interval is not 1.
 
 
 
 ## Conclusions
 
-<Summarise your results as to the effectiveness of the vaccine with explanations that could be understood by your mom>
+<Summarise your results as to the effectiveness of the vaccine with explanations that could be understood by your mom> 
+  
+We can conclude that the effectiveness of the experiment is not determined on the relationship between getting the vaccine or having AIDS. It is seen that the vaccine is effective with the test because of the groups that were sampled. Basically the vaccine is helpful and having the disease is not helpful.
